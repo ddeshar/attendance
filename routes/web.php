@@ -12,3 +12,7 @@
 */
 
 Route::get('/', 'AttenController@index')->name('atten');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -76,16 +76,22 @@
                         </div>
                     {!! Form::close() !!}
 
-                    On!ine AttenDance
+                    บันทึกเข้าทำงาน
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
-                        @if(isset($msg))
-                            <div class="alert alert-danger" role="alert">
-                                    {{ $msg }}
-                            </div>
-                        @endif
+                    
+                            @if(session()->get('success'))
+    <div class="alert alert-success">
+      {{ session()->get('success') }}  
+    </div>
+    @elseif(session()->get('error'))
+    <div class="alert alert-danger">
+            {{ session()->get('error') }}  
+          </div>
+  @endif               
+
                     </div>
 
                     <div class="col-md-8">
