@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'AttenController@index')->name('atten');
-
+Route::get('members/comed/{id}/{month}', 'AttenController@comein')->name('comein');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

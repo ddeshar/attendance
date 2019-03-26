@@ -17,6 +17,7 @@
                            <th>ชื่อ</th>
                            <th>ตำแหน่ง</th>
                            <th>จำนวนครั้ง/เดือน</th>
+                           <th>view</th>
                        </tr>
                    </thead>
                    <tbody>
@@ -32,6 +33,7 @@
                            <td scope="row">{{$items->name }}</td>
                            <td>{{$items->position }}{{$items->department }}</td>
                            <td>{{$items->total_come }} ครั้ง</td>
+                       <td><a href="{{ route('comein', [$items->id, 3] )}}" class="badge badge-primary">ตรวจสอบ</a> </td>
                        </tr>
                        @endforeach
                        @endif
@@ -55,6 +57,7 @@
                                <th>ชื่อ</th>
                                <th>ตำแหน่ง</th>
                                <th>จำนวนครั้ง/เดือน</th>
+                               <th>view</th>
                            </tr>
                        </thead>
                        <tbody>
@@ -70,6 +73,7 @@
                                <td scope="row">{{$items->name }}</td>
                                <td>{{$items->position }}{{$items->department }}</td>
                                <td>{{$items->total_come }} ครั้ง</td>
+                               <td><a href="{{ route('comein', [$items->id, 4] )}}" class="badge badge-primary">ตรวจสอบ</a> </td>
                            </tr>
                            @endforeach
                            @endif
@@ -158,11 +162,11 @@
                 </div>
             </div>
             @if(session()->get('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success" id="success">
                 {{ session()->get('success') }}
             </div>
             @elseif(session()->get('error'))
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" id="error">
                 {{ session()->get('error') }}
             </div>
             @endif
@@ -211,10 +215,10 @@
                 <tr>
 
                     <td class="">{{ $atten->name }}</td>
-                    <td class="">{{ $atten->position->name }}{{ $atten->department->name }}</td>
-                    <td class=""> @foreach($atten->attendance->where('date', $ss) as $att)
-                        {{$att->time}}
-                        @endforeach</td>
+                    <td class="">{{ $atten->position }}{{ $atten->department }}</td>
+                    <td class=""> {{ $atten->time_in }}
+                    
+                    </td>
 
                 </tr>
                 @endforeach
@@ -229,6 +233,8 @@
         </table>
 
 
+
+        
     </div>
 
 
@@ -241,11 +247,19 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FitText.js/1.1/jquery.fittext.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/th.js"> </script>
 
 <script type="text/javascript">
+
+setTimeout(function() {
+            $('#error').hide('fast');
+        }, 5000);
+        setTimeout(function() {
+            $('#success').hide('fast');
+        }, 5000);
     $('#tt').fitText(1.5);
     $('#clock').fitText(1.5);
 
