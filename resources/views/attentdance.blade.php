@@ -23,7 +23,7 @@
                    <tbody>
                         @if($singlemonth->isEmpty())
                         <tr>
-                                <td colspan="3" class="text-center">ไม่พบข้อมูลของเดือนนี้</td>
+                                <td colspan="4" class="text-center">ไม่พบข้อมูลของเดือนนี้</td>
                                
                            </tr>
                    
@@ -63,7 +63,7 @@
                        <tbody>
                             @if($singlemonth2->isEmpty())
                             <tr>
-                                    <td colspan="3" class="text-center">ไม่พบข้อมูลของเดือนนี้</td>
+                                    <td colspan="4" class="text-center">ไม่พบข้อมูลของเดือนนี้</td>
                                     
                                 </tr>
                            @else
