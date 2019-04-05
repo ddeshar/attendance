@@ -50,9 +50,17 @@
       googleCalendarApiKey: 'AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE',
       eventSources: [
         {
-          googleCalendarId: 'th.th#holiday@group.v.calendar.google.com'
+          googleCalendarId: 'th.th#holiday@group.v.calendar.google.com',
+          backgroundColor: '#2ecc71',
+          color:'#2c3e50'
+        },
+        {
+          googleCalendarId: 'n7kthnfuc8uldm955sfkpjt244@group.calendar.google.com',
+          backgroundColor: '#f39c12' ,
+          color:'#2c3e50'
         },
     
+        
       ],
       
       events: [
@@ -67,7 +75,7 @@
                     @endforeach
                
                 ],
-                eventColor: '#48dbfb',
+               
                 dateClick: function(info) {
   var m = moment();
         m.locale('th');

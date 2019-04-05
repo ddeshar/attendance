@@ -29,7 +29,7 @@ class AttenController extends Controller{
                 'members.name AS name',
                 'positions.name AS position',
                 'departments.name AS department',
-                'attendance.time AS time_in',
+                'attendance.time AS time_in'
              )->join('attendance', 'members.id', '=', 'attendance.members_id')
              ->join('positions', 'members.position_id', '=', 'positions.id')
             ->join('departments', 'members.department_id', '=', 'departments.id')
@@ -50,7 +50,7 @@ class AttenController extends Controller{
             ->join('attendance', 'members.id', '=', 'attendance.members_id')
             ->join('positions', 'members.position_id', '=', 'positions.id')
             ->join('departments', 'members.department_id', '=', 'departments.id')
-        ->groupBy('attendance.members_id')  ->whereRaw('MONTH(date) = ?',[date('m')])  ->whereNotIn('members.position_id', [1, 2])
+        ->groupBy('attendance.members_id')  ->whereRaw('MONTH(date) = ?',3)  ->whereNotIn('members.position_id', [1, 2])
         ->orderBy('total_come','desc')
         ->get();
 
@@ -128,7 +128,7 @@ class AttenController extends Controller{
             'positions.name AS position',
             'departments.name AS department',
             'attendance.date AS date',
-            'attendance.time AS time',
+            'attendance.time AS time'
             )
         ->join('attendance', 'members.id', '=', 'attendance.members_id')
         ->join('positions', 'members.position_id', '=', 'positions.id')

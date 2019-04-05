@@ -13,6 +13,8 @@
 
 Route::get('/', 'AttenController@index')->name('atten');
 Route::get('members/comed/{id}/{month}', 'AttenController@comein')->name('comein');
+Route::get('login/{provider}', 'SocialController@redirect');
+Route::get('login/{provider}/callback', 'SocialController@Callback');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -14,6 +14,17 @@ return [
     |
     */
 
+    'line' => [
+        'client_id' => env('LINE_KEY'),
+        'client_secret' => env('LINE_SECRET'),
+        'redirect' => env('LINE_REDIRECT_URI')
+    ],
+    'facebook' => [
+        'client_id' => env('FACEBOOK_APP_ID'),
+        'client_secret' => env('FACEBOOK_APP_SECRET'),
+        'redirect' => env('FACEBOOK_REDIRECT'),
+      ],
+
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
