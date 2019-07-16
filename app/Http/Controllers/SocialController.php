@@ -28,7 +28,10 @@ $user = User::create([
             'image'         => $userSocial->getAvatar(),
             'provider_id'   => $userSocial->getId(),
             'provider'      => $provider,
-        ]);
+            
+        ])->assignRole('Users');
+   
+
      return redirect()->route('home');
     }
 }

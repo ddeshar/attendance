@@ -9,6 +9,6 @@ class Positions extends Model
     //
     public function members()
     {
-        return $this->hasOne('App\MemBers','id');
+        return $this->hasOne('App\Members','id');
     }
 }

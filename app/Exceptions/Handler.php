@@ -46,6 +46,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        // if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
+        //     return response()->json(['คุณไม่มีสิทธิ์เข้าถึงหน้านี้.']);
+        // }
         return parent::render($request, $exception);
     }
 }

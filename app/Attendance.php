@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attendance extends Model{
     protected $fillable = ['members_id', 'date','time'];
-    protected $primaryKey = 'id'; // id set primaryKey
+    // protected $primaryKey = 'id'; // id set primaryKey
     protected $table = 'attendance';
     public $timestamps = false;
 

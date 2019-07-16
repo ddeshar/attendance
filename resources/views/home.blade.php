@@ -16,7 +16,10 @@
                     @endif
                     <p>My name: {{Auth::user()->name}}</p>
                     <p>My Email: {{Auth::user()->email}}</p>
-                    <img alt="{{Auth::user()->name}}" src="{{Auth::user()->image}}"/>
+                    @if(Auth::user()->image !=null)
+                        <img alt="{{Auth::user()->name}}" src="{{Auth::user()->image}}"/>
+                    @endif
+                 
                     You are logged in!
                 </div>
             </div>

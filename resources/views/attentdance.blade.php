@@ -6,40 +6,7 @@
     <div class="row">
 
         <div class="col-md-4">
-            <div class="card ">
-             
-              <div class="card-body">
-                <h4 class="card-title">จำนวนที่เข้าทำงาน เดือนมีนาคม ๒๕๖๒</h4>
-               <table class="table table-hover table-bordered">
-                   <thead>
-                       <tr>
-                           <th>ชื่อ</th>
-                           <th>ตำแหน่ง</th>
-                           <th>จำนวนครั้ง/เดือน</th>
-                           <th>view</th>
-                       </tr>
-                   </thead>
-                   <tbody>
-                        @if($singlemonth->isEmpty())
-                        <tr>
-                                <td colspan="4" class="text-center">ไม่พบข้อมูลของเดือนนี้</td>
-                               
-                           </tr>
-                   
-                       @else
-                       @foreach ($singlemonth as $items)
-                       <tr>
-                           <td scope="row">{{$items->name }}</td>
-                           <td>{{$items->position }}{{$items->department }}</td>
-                           <td>{{$items->total_come }} ครั้ง</td>
-                       <td><a href="{{ route('comein', [$items->id, 3] )}}" class="badge badge-primary">ตรวจสอบ</a> </td>
-                       </tr>
-                       @endforeach
-                       @endif
-                   </tbody>
-               </table>
-              </div>
-            </div>
+         
           
 
       
@@ -49,7 +16,10 @@
                 <div class="card " style=" margin-top :15px;">
                  
                   <div class="card-body">
-                    <h4 class="card-title">จำนวนที่เข้าทำงาน เดือนเมษายน ๒๕๖๒</h4>
+                        <?php 
+                        $yearold = Date::now()->format('Y') 
+?>
+                    <h4 class="card-title" >จำนวนที่มาทำงาน เดือน {{  Date::now()->format('F') }}{{ $yearold+543 }}</h4>
                    <table class="table table-hover table-bordered">
                        <thead>
                            <tr>
@@ -72,7 +42,7 @@
                                <td scope="row">{{$items->name }}</td>
                                <td>{{$items->position }}{{$items->department }}</td>
                                <td>{{$items->total_come }} ครั้ง</td>
-                               <td><a href="{{ route('comein', [$items->id, 4] )}}" class="badge badge-primary">ตรวจสอบ</a> </td>
+                               <td><a href="{{ route('comein', [$items->id,  Date::now()->format('m') ] )}}" class="badge badge-primary">ตรวจสอบ</a> </td>
                            </tr>
                            @endforeach
                            @endif
@@ -83,9 +53,11 @@
                 </div>
               
     
-          
-    
+                
+
+           
               
+
             </div>
 
 
@@ -184,9 +156,7 @@
       
         
         <h2 class="text-center">
-            <?php 
-                                                   $yearold = Date::now()->format('Y') 
- ?> <div class="alert alert-info" role="alert">
+       <div class="alert alert-info" role="alert">
                 <strong>
 
                     เจ้าหน้าที่เข้าทำงาน<Br>ประจำวัน{{  Date::now()->format('lที่ j F พ.ศ.') }}{{ $yearold+543 }}
@@ -272,7 +242,7 @@ setTimeout(function() {
     }
 
     setInterval(update, 1000);
-
+  
 </script>
 
 

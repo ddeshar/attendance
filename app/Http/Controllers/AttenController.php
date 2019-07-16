@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Members;
+use App\User;
+use auth;
 use App\Attendance;
 use App\Positions;
 use App\Wat;
@@ -22,6 +24,7 @@ class AttenController extends Controller{
           
             $date = new Date('today');
             $ss = $date->format('Y-m-d');
+            $monthnow = $date->format('m');
             // dd($ss);
      
             $attendence = DB::table('members') ->select(
@@ -40,19 +43,19 @@ class AttenController extends Controller{
             // $month = Attendance::where('MONTH(date) = ?', date('m'))->get();
             
 // dd(date::now()->endofMonth());
-            $singlemonth = DB::table('members')
-            ->select(
-                'members.id AS id',
-                'members.name AS name',
-                'positions.name AS position',
-                'departments.name AS department',
-                DB::raw("count(attendance.members_id) AS total_come"))
-            ->join('attendance', 'members.id', '=', 'attendance.members_id')
-            ->join('positions', 'members.position_id', '=', 'positions.id')
-            ->join('departments', 'members.department_id', '=', 'departments.id')
-        ->groupBy('attendance.members_id')  ->whereRaw('MONTH(date) = ?',3)  ->whereNotIn('members.position_id', [1, 2])
-        ->orderBy('total_come','desc')
-        ->get();
+        //     $singlemonth = DB::table('members')
+        //     ->select(
+        //         'members.id AS id',
+        //         'members.name AS name',
+        //         'positions.name AS position',
+        //         'departments.name AS department',
+        //         DB::raw("count(attendance.members_id) AS total_come"))
+        //     ->join('attendance', 'members.id', '=', 'attendance.members_id')
+        //     ->join('positions', 'members.position_id', '=', 'positions.id')
+        //     ->join('departments', 'members.department_id', '=', 'departments.id')
+        // ->groupBy('attendance.members_id')  ->whereRaw('MONTH(date) = ?',3)  ->whereNotIn('members.position_id', [1, 2])
+        // ->orderBy('total_come','desc')
+        // ->get();
 
         $singlemonth2 = DB::table('members')
             ->select(
@@ -64,7 +67,7 @@ class AttenController extends Controller{
             ->join('attendance', 'members.id', '=', 'attendance.members_id')
             ->join('positions', 'members.position_id', '=', 'positions.id')
             ->join('departments', 'members.department_id', '=', 'departments.id')
-        ->groupBy('attendance.members_id')  ->whereRaw('MONTH(date) = ?',4)->whereNotIn('members.position_id', [1, 2])
+        ->groupBy('attendance.members_id')  ->whereRaw('MONTH(date) = ?',$monthnow)->whereNotIn('members.position_id', [1, 2])
         ->orderBy('total_come','desc')
         ->get();
        
@@ -112,14 +115,15 @@ class AttenController extends Controller{
         }
 
         // return view('welcome');
-        return view('/attentdance', compact('name','position','time','attendence','singlemonth','allmonth','member','singlemonth2'));
+        return view('/attentdance', compact('name','position','time','attendence','allmonth','member','singlemonth2'));
     }
 
 
     public function comein($id,$month){
 
-        // $members = Members::findorfail($id);
-        
+        // $not_friends = User::where('id', '!=', Auth::user()->id);
+        // // $members = Members::findorfail($id);
+        // dd($not_friends->get());
 
         $members = DB::table('members')
         ->select(

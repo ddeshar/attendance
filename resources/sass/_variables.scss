@@ -18,3 +18,17 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+
+
+.progress {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 2px;
+    width: 0%;
+    transition: width 0.2s, opacity 0.4s;
+    opacity: 1;
+    background: #ffed4a;
+    z-index: 99999;
+}
